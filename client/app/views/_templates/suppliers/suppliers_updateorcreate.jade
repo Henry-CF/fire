@@ -1,0 +1,23 @@
+- var supplier = locals
+.page-header
+	h1 
+		if supplier.name
+			| Edit #{supplier.name}
+		else
+			| New Supplier
+		
+		
+form(action!='/suppliers', method='PUT', enctype='multipart/form-data')#main-form
+
+	.row
+		.clearfix
+			input(name='name', placeholder='Name', value!="#{supplier.name}")#name
+
+		.clearfix	
+			input(name='skuCode', placeholder='skuCode', value!="#{skuCode}", disabled='true')#skuCode
+
+	.row#surcharges-container
+
+.actions
+	a(href='#')#sync.action.primary Sync
+	a(href='#/suppliers').action.danger Cancel

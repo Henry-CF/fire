@@ -1,0 +1,21 @@
+!!! 5
+html
+  head
+    title= title
+    != stylesheet_link_tag('app')
+    != javascript_include_tag('vendor', 'app')
+    script(src='http://#{domain}/socket.io/socket.io.js')
+    script
+      var DOMAIN = "#{domain}"
+      //var WEB_SOCKETS_PORT = "#{websocketsPort}"
+      var CDN = "#{cdn}"
+    != csrf_meta_tag()
+  body
+    .overlay.hidden
+    navigation#left-pane
+
+    .container-fluid
+      .application#page-container
+        != body
+
+    

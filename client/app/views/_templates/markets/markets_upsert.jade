@@ -1,0 +1,20 @@
+- var market = locals
+.page-header
+  h1 
+    if market.name
+      | Edit #{market.name}
+    else
+      | New Market
+    
+    
+form(action!='/markets', method='PUT', enctype='multipart/form-data')#main-form
+
+  .row
+    .clearfix
+      input(name='name', placeholder='Name', value!="#{market.name}")#name
+
+#surcharges-container.cards-container.row
+
+.actions
+  a(href='#')#sync.action.primary Sync
+  a(href='#/markets').action.danger Cancel

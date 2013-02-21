@@ -1,0 +1,114 @@
+@import 'nib'
+
+.actions
+	margin-top 15px
+	padding 3px 0px
+	clear both
+
+.action
+	box-shadow inset 1px 1px 5px rgba(20,20,20,.15), inset -1px -1px 5px rgba(20,20,20,.15), 1px 1px 5px rgba(20,20,20,.35), -1px -1px 5px rgba(20,20,20,.35), 1px 1px 5px rgba(20,20,20,.15)
+	line-height 16px
+	text-align center
+	display inline-block
+	margin 5px
+	padding 2px 5px
+	transition 0.3s all
+	background #c0c0c0
+	color #fff
+	min-width 60px
+	font-size 10px
+
+	i
+		margin-right 7px
+
+	&.large
+		padding 3px 6px
+
+	&:hover
+		color darken(#c0c0c0,20)
+		background #fff
+
+	&.danger
+		background rgba(darken(red,15), .65)
+
+		&:hover
+			background rgba(darken(red,15), .85)
+			border 1px solid rgba(darken(red,15), .65)
+			color #fff
+
+	&.info
+		background rgba(37, 77, 165, .65)
+
+		&:hover
+			background rgba(37, 77, 165, .95)
+			border 1px solid rgba(37, 77, 165, .65)
+			color #fff
+
+	&.primary
+		border 1px solid darken(rgba(83, 128, 24, .75),.15)
+		background rgba(83, 128, 24, .65)
+
+		&:hover
+			background rgba(83, 128, 24, .85)
+			border 1px solid rgba(83, 128, 24, .95)
+			color #fff
+
+.click-to-change
+	display inline-block
+	color #666
+	font-size 11px
+	font-weight bold
+	background #f5f5f5
+	border 1px solid #e5e5e5
+	padding 4px 10px
+	line-height 18px
+	height 18px
+	margin-right 5px
+	transition all 0.3s
+
+	&:hover
+		background #e5e5e5
+		color #222
+		border 1px solid #ccc
+
+	&.changed
+		background rgba(#dbdbdb,.85)
+		border-color #606060
+
+
+.checkbox
+	position relative
+	display inline-block
+	width 80px
+	text-align left
+	padding-left 35px
+
+	.box
+		position absolute
+		top 6px
+		left 8px
+		height 15px
+		width 16px
+		border 1px solid #e5e5e5
+		background-color #fff
+
+
+	&:hover
+		cursor pointer
+
+	&.on
+		background rgba(#006000, .40)
+		border-color rgba(darken(#006000,5), .65)
+		box-shadow inset 1px 1px 1px rgba(#006000,.10), inset -1px -1px 1px rgba(#006000,.10)
+		color #fff
+
+		.box
+			background #fff url('../images/checkmark.png') no-repeat -4px -2px
+
+.page-header
+	.actions
+		float right
+		margin-top -25px
+
+		.action 
+			margin 0px

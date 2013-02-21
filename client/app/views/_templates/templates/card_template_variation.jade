@@ -1,0 +1,10 @@
+- variation = locals;
+
+//- Hidden Fields
+input(name='_id', value='#{variation._id}', type='hidden')
+
+input(name='type', value='#{variation.type}', placeholder='type').type
+input(name='skuMod', value='#{variation.skuMod}', placeholder='SKU modifier').sku-mod
+
+a(href='#').delete-card
+  i.icon-minus

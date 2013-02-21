@@ -1,0 +1,135 @@
+@import 'nib'
+
+.image-gallery
+	transition all 0.3s
+
+	&.push
+		padding-top 150px
+	
+	.page-header		
+		h1
+			float left
+		
+		.nav-bar
+			float right
+			margin-top -10px	
+
+
+.fileinput-button
+	display inline-block
+	position relative
+	width 80px
+	background #0aadff
+	padding 0px 2px 3px 2px
+	border 1px solid transparent
+	box-shadow 1px 1px 4px rgba(#000,.15), -1px -1px 4px rgba(#000,.15), inset 1px 1px 4px rgba(#000,.15), inset -1px -1px 4px rgba(#000,.15)
+	line-height 20px
+
+	&.hidden
+		display none
+
+	> span
+		margin-left 5px
+		font-size 10px
+		color #fff
+
+
+	> i
+		margin-top 3px
+		margin-left 5px
+		
+	input#fileupload
+		margin 0
+		padding 0
+		border 0
+		outline 0
+		position absolute
+		top 0px
+		left 0px
+		height 0px
+		width 0px
+		border-bottom 24px solid transparent
+		border-right 84px solid transparent
+
+
+.gallery-uploader
+	position absolute
+	z-index 15
+	right 45px
+	bottom 0px
+	transition all 0.3s
+	width 400px
+	background #fff
+	border 1px solid #ccc
+	border-bottom 0px
+	font-family arial,sans-serif
+	padding-bottom 20px
+
+	h6
+		border-bottom 1px solid #ccc
+		padding 0
+		margin 0
+		padding 5px
+		font-size 9px
+		background #2b2b2b
+		color #f7f7f7
+
+		a.close-uploader
+			float right
+
+	.menu
+		padding-left 10px
+		border-bottom 1px solid #ccc
+		background #f5f5f5
+
+		a
+			padding 3px 10px
+			display inline-block
+			color #555
+			font-weight bold
+			
+			i
+				margin-top 3px
+				margin-left 5px
+
+	ul#cards-container
+		margin 0 
+		padding 0
+		list-style-type none
+		
+		li
+			margin 0
+			border-bottom 1px solid #e5e5e5
+			padding 3px 5px
+
+		.card
+
+			span
+				font-size 9px
+				display inline-block
+
+				&.file-name
+					width 100px
+					padding-left 5px
+					overflow hidden
+					height 12px
+
+				&.status-bar
+					margin-left 10px
+					padding 0px 5px
+					text-transform uppercase
+					font-weight bold
+				
+				&.scope
+					float right
+					font-size 9px
+					text-transform uppercase
+					font-weight bold
+					width 100px
+					padding 0 5px 0px 15px
+					transition background 1.0s
+					text-align center
+
+				&.changed
+					background #93ff93
+

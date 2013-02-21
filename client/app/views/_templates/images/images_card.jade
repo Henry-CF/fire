@@ -1,0 +1,14 @@
+
+- var image = locals
+.index-row(data-id='#{image._id}')
+  .span2
+    | #{image.stem}
+
+  for type in image.types
+    .span75
+      a(href='http://i.symboli.se/images/#{stem}-#{type}.#{ext}', target='_blank')= type
+
+  .row-actions
+    a(href='#', data-id="#{ image._id }").delete
+      i.icon-trash
+      

@@ -1,0 +1,21 @@
+- market = locals
+
+h6= market.name
+
+ol.stats
+  
+
+  li.generated-statistics
+    ul.generated-statistics
+      li.stat
+        .title ROI
+        .roi=market.ROI
+      li.stat
+        .title Profit
+        .profit=market.profit
+      li.stat
+        .title Our Price
+        .price= market.price
+      li.activator
+        .checkbox(data-field='active').market-state
+          .box 

@@ -1,0 +1,27 @@
+.flash-message
+  position fixed
+  z-index 1000
+  width 650px
+  background #cfc
+  margin-top 5px
+
+  &.success
+    background rgba(darken(#009E00,5))
+    border 1px solid rgba(darken(#009E00,15), .70)
+    color #f5f5f5
+    
+
+  &.error
+    background red
+
+  > span
+    font-weight 300
+    padding 0px 10px
+    line-height 30px
+
+  > a
+    float right
+    padding 0px 20px
+    background rgba(#f5f5f5,.80)
+    border-left 1px solid #e5e5e5
+    line-height 30px

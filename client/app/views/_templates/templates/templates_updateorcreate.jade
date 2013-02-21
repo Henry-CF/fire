@@ -1,0 +1,25 @@
+- var template = locals
+.page-header
+	h1 
+		if template.name
+			| Edit : #{template.name}
+		else
+			| New Template
+		
+
+form(action!='/variationstemplates', method='PUT', data-remote='true', enctype='multipart/form-data')#main-form
+
+	.clearfix
+		label Name
+		input(name="name", value='#{name}' )#name
+
+
+#variations-container.cards-container
+
+
+
+	
+
+.actions
+	a(href='#')#sync.action.primary Sync
+	a(href='#/pages').action.danger Cancel

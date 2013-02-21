@@ -1,0 +1,10 @@
+- var color = locals
+
+input(name='_id', value='#{color._id}', type='hidden').id
+input(name='name', value='#{color.name}', placeholder="title").name
+input(name='shortCode', value='#{color.shortCode ? color.shortCode : ''}', placeholder='Short Code').shortCode
+textarea(name='description').description #{color.description}
+
+.card-actions
+  a(href='#').delete-card
+    i.icon-minus

@@ -1,0 +1,22 @@
+- var product = locals
+
+.span2 
+  a(href!='#/products/#{product._id}/edit')=product.title
+
+if product._color
+  .span2=product._color.name
+else
+  .span2.missing Missing Color
+
+if product._category
+  - var name = product._category.singular ? product._category.singular : product._category.name;
+  .span2 #{ name }
+else
+  .span2.missing Missing Category
+
+
+.row-actions
+  a(href!='#/products/#{product._id}/edit')
+    i.icon-edit
+  a(href='#', data-id='#{product._id}' ).delete
+    i.icon-trash

@@ -1,0 +1,114 @@
+- var product = locals
+
+.content
+	.page-header
+		h1
+			if product.id
+				| Edit : #{product.title}
+			else
+				| New Product
+			span.timestamp #{product.updatedAt}
+
+	form(action!='/products', method='PUT', enctype='multipart/form-data')#main-form
+
+		.clearfix.title-container
+
+			a(href='#', data-field ='_brand', data-querymodel='brand').click-to-change.dynamo-menu.brand
+				
+				| #{ product._brand ? product._brand.name : 'add brand' }
+
+			input(name="title", value="#{ product.title }", placeholder='Title')#title
+
+			a(href='#', data-field ='_category', data-querymodel='category').click-to-change.dynamo-menu.category
+			
+					| #{ product._category ? product._category.name : 'add category' }
+		
+				
+		
+			.brand-dependants-container(class='#{ product._brand ? '' : 'hidden'}')
+				//- contains brand dependant fields that must change state on whether the product has a brand or not	
+				.drop-down-menu-container
+						a(href='#',data-parent='_brand', data-key='colors', data-field='_color').drop-down-trigger.color.click-to-change
+							
+							| #{ product._color ? product._color.name : 'add color' }
+
+				.drop-down-menu-container
+						a(href='#', data-parent='_brand', data-key='materials', data-field='_material').drop-down-trigger.material.click-to-change
+							
+							| #{ product._material ? product._material.name : 'add material' }
+
+			.genders-container
+
+				.checkbox(data-field='male', class='#{product.male == true ? 'on' : "" }' ).click-to-change
+					.box 
+					| Male
+
+
+				.checkbox(data-field='female', class='#{product.female == true ? 'on' : '' }' ).on.click-to-change
+					.box 
+					| Female
+
+		.clearfix.row
+			h5 Supplier Information
+
+			.holder
+					.drop-down-menu-container
+						a(href='#', data-url='/suppliers', data-field='_supplier').click-to-change.drop-down-trigger.supplier
+							
+							| #{ product._supplier ? product._supplier.name : 'add supplier' }
+
+					input(name='skuBase', value="#{ product.skuBase }", placeholder='supplier sku...' ).sku-base
+
+					input(name='MAP', value="#{ product.MAP }", placeholder='MAP').product-map
+
+
+		.clearfix.row
+
+			h5.description Description
+			textarea(name="description")#description #{product.description}
+
+		.clearix.gallery-container
+			//-
+				contains the subview for image gallery
+		
+
+		.clearfix.row.pricing-data
+			h5.pricing-data
+				| Pricing Information
+
+			.static-product-variables
+				
+				.variable
+					span.add-on Cost
+					input(name="cost", value="#{ product.cost }")#cost
+				
+				.variable
+					span.add-on Markup (%)
+					input(name='markup', value="#{ product.markup }")#markup
+
+			.supplier-surcharges
+				if product._supplier
+					for surcharge in product._supplier.surcharges
+						.supplier-surcharge
+							span.supplier-surcharge-type= surcharge.type
+							span.supplier-surcharge-cost= surcharge.cost
+
+
+
+			#markets-container.cards-container
+				//- contains market pricing subviews
+
+		.row.cards-container#selling-points-container
+			//- contains selling points subview
+
+		.row.cards-container#variations-container
+			//- contains variations subview
+			
+
+.actions
+	a(href='#', data-id="#{product.id}")#sync.action.primary Sync
+	//-
+		a(href='#').clone.action.info Clone
+	a(href='#/products').action.danger Cancel
+
+

@@ -1,0 +1,41 @@
+- var category = locals
+.page-header
+	h1 
+		if category.name.plural 
+			| Edit :: #{category.name.plural}
+		else
+			| New Category
+			
+
+form(action!='/categories', method='PUT', data-remote='true', enctype='multipart/form-data')#main-form
+
+	.clearfix.row
+		label Name
+		input(name="name", value!='#{category.name}' )#name
+		
+	.clearfix
+		if category.onlyPlural == true
+			.checkbox(data-field='onlyPlural').on.click-to-change
+				.box
+				| Only Plural?
+		else
+			.checkbox(data-field='onlyPlural').click-to-change
+				.box
+				| Only Plural?
+		
+//-
+	.variations-template-holder
+		
+
+	.variations-template-actions
+		
+		a(href='#').attach-template 
+			i.icon-plus
+			if category.variationsTemplate
+				| Change Template 
+			else 
+				| Attach Template
+
+.actions
+	a(href='#')#sync.action.primary Sync
+	a(href='#/categories').action.danger Cancel

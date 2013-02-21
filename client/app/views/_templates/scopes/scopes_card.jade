@@ -1,0 +1,8 @@
+- var scope = locals
+
+.span2 #{scope.name}
+.row-actions
+  a(href!='#/scopes/#{scope._id}/edit')
+    i.icon-edit
+  a(href='#', data-id='#{scope._id}' ).delete
+    i.icon-trash

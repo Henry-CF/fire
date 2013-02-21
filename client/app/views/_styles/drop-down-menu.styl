@@ -1,0 +1,52 @@
+.drop-down-menu-container
+	display inline-block
+	position relative
+	margin 10px 3px 5px 3px
+
+
+.drop-down-menu
+	padding 0px
+	margin 0px
+	position absolute
+	top -10px
+	left -10px
+	background #fff
+	z-index 1
+	box-shadow 2px 2px 5px rgba(#000,.10)
+	border 1px solid #ccc
+	z-index 100
+	padding 5px
+
+	.loading
+		margin 0px
+		padding 2px 0px
+		width 100%
+
+	.fallback
+		font-size 10px
+		padding 3px 0px
+		margin 0px
+
+	ul
+		margin 0
+		list-style-type none
+		
+
+
+	li
+		margin 3px 0
+		color #333
+		padding 2px 5px 2px 
+		background #f5f5f5
+		border 1px solid #e5e5e5
+		transition all 0.3s
+		font-weight bold
+		font-size 11px
+
+		&:hover
+			background darken(#fff, 5)
+			border 1px solid darken(#e5e5e5, 15)
+			cursor pointer
+
+
+

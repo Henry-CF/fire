@@ -1,0 +1,9 @@
+- var material = locals
+
+input(name='_id', value='#{material._id}', type='hidden')
+input(name='name', value='#{material.name}', placeholder='title').name
+textarea(name='description').description #{material.description}
+
+.card-actions
+  a(href='#').delete-card
+    i.icon-minus

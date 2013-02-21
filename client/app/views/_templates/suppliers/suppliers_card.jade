@@ -1,0 +1,7 @@
+- var supplier = locals
+.span2 #{supplier.name}
+.row-actions
+	a(href!='#/suppliers/#{supplier._id}/edit')
+		i.icon-edit
+	a(href='#', data-id='#{supplier._id}' ).delete
+		i.icon-trash

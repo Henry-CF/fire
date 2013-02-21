@@ -1,0 +1,39 @@
+- var variation = locals
+
+//- Hidden Fields
+input(name='_id', value='#{variation._id}', type='hidden')
+input(name='displayWeight', value='#{variation.displayWeight}', type='hidden')
+
+//- Editable Fields
+.cell
+  input(name='type', value='#{ variation.type }', placeholder='type').field
+
+.cell
+  input(name='surcharge', value='#{ variation.surcharge }', placeholder='surcharge').field
+
+.cell.sku-container
+  input(name='sku', value='#{ variation.sku }', placeholder='sku', disabled='true').field.sku
+
+.cell.sku-mod-container
+  input(name='skuMod', value= '#{ variation.skuMod }', placeholder='ex: sm, lg', maxlength='2').field.sku-mod
+
+.cell
+  input(name='mCode', value='#{ variation.mCode }', placeholder='EAN/UPC').field
+
+.cell.quantity-container
+  input(name='exQuantity', value='#{ variation.exQuantity }', placeholder='External Quantity').field.quantity
+
+.cell.quantity-container
+  input(name='inQuantity', value='#{ variation.inQuantity }', placeholder='Internal Quantity').field.quantity
+
+
+.cell.card-actions
+
+  a(href='#').add-internal-item increase
+    
+  a(href='#').subtract-internal-item decrease
+
+  a(href='#', data-id='#{ variation.id }').delete-card
+    i.icon-remove
+    
+

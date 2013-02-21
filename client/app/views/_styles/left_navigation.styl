@@ -1,0 +1,67 @@
+@import 'nib'
+
+navigation#left-pane
+	width 180px
+	position relative
+	height 100%
+	font-size 11px
+	float left
+
+	.search
+		height 28px
+		margin-bottom 20px
+		position relative
+		i
+			position absolute
+			top 6px
+			left 9px
+
+		input
+			padding:2px 5px 2px 22px
+			height:20px
+			line-height 16px
+			z-index:1
+			width:113px
+			margin-left 5px
+			margin-bottom 25px
+			color:#a7a7a7
+			display inline-block
+			transition all 0.3s
+			border 1px solid #c0c0c0
+			border-radius 0px
+
+			&::-webkit-input-placeholder
+				color #c0c0c0
+
+			&:focus
+				border 1px solid #c0c0c0
+				text-shadow 0 0px 0
+				background-color #fff
+				box-shadow 0px 0px 0px
+
+				&::-webkit-input-placeholder
+					color #fff
+
+	.logout
+		margin-top 75px
+
+
+	ul#navigation
+		list-style-type none
+		margin 0px
+		margin-top 65px
+		> li
+
+			> a
+				border-left 1px solid transparent
+				display block
+				padding-left 10px
+				padding 5px 0px 5px 10px
+				transition all 0.3s
+				color darken(#c0c0c0, 20)
+				font-weight bold
+
+				&:hover
+					color #7a7a7a
+					border-left 3px solid darken(#c0c0c0,35)
+					text-decoration none

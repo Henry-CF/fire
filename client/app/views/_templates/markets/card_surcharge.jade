@@ -1,0 +1,11 @@
+- var surcharge = locals
+
+//- Hidden Fields
+input(name='_id', value='#{surcharge._id}', type='hidden')
+
+//- Editable Fields
+input(name='type', value='#{ surcharge.type }', placeholder='name')
+input(name='cost', value='#{ surcharge.cost }',placeholder='cost')
+
+a(href='#').delete-card
+  i.icon-remove

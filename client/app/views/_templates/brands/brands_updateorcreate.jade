@@ -1,0 +1,24 @@
+- var brand = locals
+.page-header
+	h1 
+		if brand.name
+			| Edit #{brand.name}
+		else
+			| New Brand
+
+form(action!='/brands', method='PUT', enctype='multipart/form-data')#main-form
+
+	.row
+		.clearfix
+			input(name='name', value='#{brand.name}', placeholder='Name')#name
+		
+		.clearfix	
+			textarea(name='description', placeholder='Description')#description #{brand.description}
+
+#colors-container.cards-container
+
+#materials-container.cards-container
+
+.actions
+	a(href='#')#sync.action.primary Sync
+	a(href='#/brands').action.danger Cancel

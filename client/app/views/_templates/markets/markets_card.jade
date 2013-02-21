@@ -1,0 +1,8 @@
+- var market = locals
+
+.span2 #{market.name}
+.row-actions
+  a(href!='#/markets/#{market._id}/edit')
+    i.icon-edit
+  a(href='#', data-id='#{market._id}' ).delete
+    i.icon-trash

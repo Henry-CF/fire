@@ -1,0 +1,13 @@
+- var action = locals
+
+//- Hidden Fields
+input(name='_id', value='#{action._id}', type='hidden')
+
+//- Editable Fields
+input(name='suffix', value='#{ action.suffix }', placeholder='suffix')
+input(name='height', value='#{ action.height }',placeholder='height')
+input(name='width', value='#{ action.width }', placeholder='width')
+input(name='job', value='resize', disabled='true').hidden
+
+a(href='#').delete-card
+  i.icon-remove

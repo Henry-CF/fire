@@ -1,0 +1,519 @@
+@import 'nib'
+
+section.products-index
+	.index-row
+		:first-child.span2
+			overflow hidden
+			transition all 0.3s
+			&:hover
+				width 200px
+		
+		.span2
+			width 100px
+			
+			
+
+section.product-updateorcreate
+	width 780px
+	
+	input, textarea
+		border 1px dashed #ccc
+		box-shadow 0px 0px 0px
+
+		&:focus
+			border 1px solid #777
+			box-shadow 0px 0px 0px
+
+	.row
+		border-color #c0c0c0
+		padding 0px
+		margin 13px 0px
+
+		h5
+			padding 10px 0px 10px 0px
+			margin-bottom 10px
+			border-bottom 1px solid #c0c0c0
+			background #fff
+			color #676767
+			text-align center
+
+	.timestamp
+		font-size 10px
+		margin-left 10px
+
+	.title-container
+
+		input
+			margin-top -3px
+
+		> a
+			width 100px
+
+		#title
+			width 120px
+
+		
+	.genders-container
+		margin 5px 0px
+		display inline-block
+
+		.checkbox
+			width 50px
+
+	.brand-dependants-container
+		display inline-block
+
+	label.checkbox
+		width 55px
+		margin 5px 0px 0px 5px
+		padding 5px 5px 5px 10px
+		display inline-block
+		line-height 26px
+
+
+	textarea#description
+		height 100px
+		width 751px
+		margin-left 5px
+		display block
+
+
+	h5.fallback
+			background #fff
+			margin 10px 5px
+			border 2px solid rgba(#c10000,.30)
+			text-transform uppercase
+			color #7a0000
+
+	.gallery-container
+		border 1px solid #c0c0c0
+		border-bottom 0px
+		background #f5f5f5
+		margin 10px 0px
+		padding 10px 0px 0px 0px
+
+		ol#cards-container
+			list-style-type none
+			position relative
+			padding 0px 
+			margin 0px
+			padding 0px 5px 0px 5px
+
+			li
+				border 1px solid #e5e5e5
+				float left
+				display block
+				height 100px
+				width 100px
+				margin 0px 10px 10px 0px
+				background url(../images/image-loading.gif) no-repeat 50% 50%
+
+				img
+					max-height 100px
+
+		.suggestions-menu
+			.gallery
+				position fixed
+				z-index 101
+				border 1px solid #e5e5e5
+				width 590px
+				left 50%
+				margin-left -296px
+				top 10px
+				background #f5f5f5
+				box-shadow 20px 20px 50px rgba(#000,.30), -20px -20px 50px rgba(#000,.30)
+				
+				.header
+					border-bottom 1px solid #e5e5e5
+					position relative
+					height 16px
+					background #fff
+					margin-bottom 5px
+					> i
+						float right
+						display block
+
+				.search-bar
+					padding-top 5px
+					width 200px
+					margin 0 auto
+					position relative
+
+					i
+						position absolute
+						left 10px
+						top 12px
+					input
+						width 175px
+						padding-left 25px
+				
+				ol#cards-container
+					position relative
+					clear both
+					display block
+					padding 10px 0px 10px 20px
+
+					.image
+						transition all 0.3s
+
+						&:hover
+							border-color rgba(#00bc00,.30)
+
+		.gallery-actions
+			clear both
+			border-top 1px solid #c0c0c0
+			border-bottom 1px solid #c0c0c0
+			background #dddddd
+			padding 0px
+			height 28px
+
+			a
+				margin-top -1px
+				margin-left -1px
+				padding 5px 20px
+				width 75px
+				display inline-block
+				text-align center
+				transition all 0.3s
+				border 1px solid #c0c0c0
+
+				&:not(:first-child)
+					margin-left 0px
+
+				&:hover
+					border-color #afafaf
+					background #e5e5e5
+			i
+				margin-top 2px
+				margin-right 4px
+
+
+
+	.pricing-data
+		padding 0px 0px 10px 0px
+
+		.static-product-variables
+			margin 0px 5px
+			overflow auto
+			position relative
+			float left
+
+			.variable
+				font-size 11px
+				margin-bottom 5px
+				width 400px
+				margin 5px 10px
+				clear both
+
+
+				span.add-on
+					float left
+					border 1px solid #c0c0c0
+					border-right 0px
+					padding 4px 5px
+					width 75px
+					display inline-block
+					text-align right
+					padding-right 10px
+					font-weight bold
+
+				input
+					width 100px
+
+		.supplier-surcharges
+			float left
+			padding 5px
+			border 1px solid #c0c0c0
+			top 0px
+			overflow auto
+			width 250px
+			
+			&:before
+				content 'Supplier Surcharges'
+				text-align center
+				font-weight bold
+
+			.supplier-surcharge
+				margin-top 3px
+				span
+					float left
+					width 125px
+
+
+		#markets-container
+			clear both
+
+
+		.markets
+			padding 10px
+
+			.market
+				width 150px
+				float left
+				border 1px solid #c0c0c0
+				margin 0px 5px
+				transition all 0.2s
+				min-height 170px
+				position relative
+
+				.market-state
+					height 24px
+					display block
+					border-top 1px solid #c0c0c0
+					width 115px
+					line-height 22px
+					font-weight bold
+					content 'off'
+					color #777
+					font-size 9px
+
+					.box
+						top 4px
+
+						&:after
+							position absolute
+							left 35px 
+							top -5px
+							content 'deactivated'
+
+				&.active	
+				
+					.market-state
+						background rgba(#006000, .40)
+						border-color rgba(darken(#006000,5), .65)
+						box-shadow inset 1px 1px 1px rgba(#006000,.10), inset -1px -1px 1px rgba(#006000,.10)
+						color #fff
+
+					.box
+						background #fff url('../images/checkmark.png') no-repeat -4px -2px
+
+						&:after
+							content 'active'
+
+
+				h6
+					text-align center
+				
+				> ol
+					padding 0
+					margin 0
+					list-style-type none
+
+					li
+						margin 0
+						padding 2px 5px
+
+						.surcharge
+							float right
+
+						&.activator
+							padding 0px
+
+						&.generated-statistics
+							padding 0px
+
+					.surcharges-collection
+						font-size 11px
+						background #e2e2e2
+						height auto
+
+					
+						span.type
+							font-weight bold
+							text-align right
+							font-size 8px
+							padding-right 10px
+							width 95px
+							display inline-block
+					
+						span.cost
+							text-decoration italic
+							display inline-block
+
+
+			ul.generated-statistics
+				list-style-type none
+				padding 0
+				margin 0
+				position absolute
+				bottom 0px
+
+				.stat
+					border-top 1px solid #c0c0c0
+					height 20px
+					clear both
+					margin 0
+					padding 0px
+					line-height 20px
+
+					div
+						padding 0px
+						margin 0px
+						display inline-block
+						float left
+
+					.title
+						padding-right 0px
+						text-align right
+						width 100px
+						font-weight bold
+						font-size 12px
+
+					.price, .roi, .profit
+						width 40px
+						padding-left 5px
+						margin-left 5px
+						text-align left
+						transition 0.7s
+						font-weight bold
+						font-size 10px
+						
+						&.changed
+							background #e5e5e5
+
+				&.active
+					border 1px solid green
+						
+					h6
+						color darken(green, .10	)		
+
+	.cards-container
+		
+		.cards
+			padding-bottom 10px
+
+		.card
+			margin 7px 5px
+
+		form
+			margin 0px
+			padding 0px
+		
+		.card-collection-actions
+			clear both
+			border-top 1px solid #c0c0c0
+			padding 0px
+			height 28px
+			background #dddddd
+			position relative
+
+			a
+				font-size 12px
+				margin-top -1px
+				margin-left -1px
+				padding 5px 20px
+				width 75px
+				display inline-block
+				text-align center
+				transition all 0.3s
+				border 1px solid #c0c0c0
+				position relative
+
+				&.hidden
+					display none
+
+				&:not(:first-child)
+					margin-left 0px
+
+				&:hover
+					border-color #afafaf
+					background #e5e5e5
+			i
+				margin-top 0px
+				margin-left -10px
+
+
+	.variations
+		
+		ul.variations-table
+			list-style-type none
+			margin 0
+			padding 0
+			display block
+
+			li
+				margin 0
+				padding 0
+				display block
+
+				&.headers
+					padding 0px 5px
+					margin-bottom 10px
+					padding 5px 0px
+					border-bottom 1px solid #c0c0c0
+					background #fff
+					color #676767
+
+			li.cards
+				display block
+
+			.card
+				display block
+				position relative
+				height 28px
+				
+				&:after
+					clear both
+
+			h4.header
+				display inline-block
+				width 90px
+				margin 0px 5px
+				font-size 10px
+				text-align center
+
+				&.sku
+					width 120px
+
+				&.sku-mod
+					width 40px
+
+				&.quantity
+					width 40px
+
+			.cell
+				display block
+				float left
+				width 90px
+				margin 0px 5px
+				
+				input
+					margin-left 5px
+					width 70px
+
+				&.sku-container
+					width 110px
+
+					input
+						width 100px
+
+				&.sku-mod-container
+					width 40px
+						
+					input
+						width 30px
+
+				&.quantity-container
+					width 40px
+
+					input
+						width 30px
+
+			.card-actions
+				width 150px
+				position relative	
+
+				a
+					display block
+					float left
+					border 1px solid #ccc
+					height 26px
+					padding 0 5px
+					font-size 9px
+					line-height 24px
+					font-weight bold
+					color #222
+
+					&:hover
+						border 1px solid #777
+						box-shadow inset 0px 1px 2px rgba(#000, .2)

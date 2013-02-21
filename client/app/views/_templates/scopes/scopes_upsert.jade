@@ -1,0 +1,20 @@
+- var scope = locals
+.page-header
+  h1 
+    if scope.name
+      | Edit #{scope.name}
+    else
+      | New Scope
+    
+    
+form(action!='/scopes', method='PUT', enctype='multipart/form-data')#main-form
+
+  .row
+    .clearfix
+      input(name='name', placeholder='Name', value!="#{scope.name}")#name
+
+#actions-container.cards-container.row
+
+.actions
+  a(href='#')#sync.action.primary Sync
+  a(href='#/scopes').action.danger Cancel

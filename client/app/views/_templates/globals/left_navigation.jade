@@ -1,0 +1,7 @@
+li.search
+	i.icon-search
+	input#query(autocomplete='off', placeholder='Search', data-param='')
+
+for link in locals.links
+	li
+		a(href='#{link.href}', class='#{link.class}') #{link.title}
