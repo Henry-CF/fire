@@ -21,6 +21,7 @@ exports.routes = (map) ->
 
   map.get '/images/tags/:tags', 'images#tags'
 
+  map.resource 'users', subdomain: 'admin.harrisonavenueonline.com'
 
   # Handles uploads
   # Abstracted away from Image controller due to future uploading capabilities

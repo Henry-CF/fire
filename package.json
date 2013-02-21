@@ -18,7 +18,8 @@
     "rw.io": "0.0.2",
     "mongoose": "~3.5.3",
     "natural": "~0.1.19",
-    "underscore": "~1.4.4"
+    "underscore": "~1.4.4",
+    "connect-redis": "~1.4.5"
   },
   "devDependencies": {
     "nodeunit": "*",

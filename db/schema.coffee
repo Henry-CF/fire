@@ -4,8 +4,8 @@ customSchema ->
   mongoose.plugin require('rw.mango').timestamp
   mongoose.plugin require('rw.mango').queries
   
-  mongoose.connect "mongodb://localhost/product-manager-dev"
+  mongoose.connect "mongodb://ondreian:BfdLMHCFtYF75uF@localhost/product-manager"
 
   # Yes, i'm a cheeky bastard.
-  @self.compound.mongoose = mongoose # expose mongoose to entire app
-
+  # expose mongoose to entire app
+  @self.compound.mongoose = mongoose 
