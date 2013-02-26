@@ -17,8 +17,8 @@ before 'load populated product', ->
             .exec (err, product) => 
                 if err then res.json error: err.message
                 else if product
-                        @product = product
-                        next()
+                    @product = product
+                    next()
                 else
                     res.json error: 'Product does not exist'
 
@@ -27,7 +27,7 @@ before 'load populated product', ->
 before 'subpopulate', ->
     
     @product.loadGrandChildren (err, product)=>
-        if err then app.handleError err
+        if err then res.json error: err.message
         @product = product
         next()
 
@@ -44,7 +44,8 @@ before 'load product', ->
      compound.models.Product
         .findById(params.id)
         .exec (err, product) =>
-            if err then app.handleError err
+            if err 
+                res.json error: err.message
             else if product
                 @product = product
                 next()
@@ -61,7 +62,10 @@ before 'create product instance', ->
 
 before 'handle variations', ->
     @product.updateVariations @variations, (err)=>
-        if err then app.handleError err else next()
+        if err 
+            res.json error: err.message 
+        else
+            next()
 
 , only: ['create', 'update']
 
@@ -87,7 +91,8 @@ action 'show', ->
 action 'create', ->
     
     @product.save (err, product)->
-        if err then throw new Error(err)
+        if err 
+            res.json error: err.message
         else
             res.json product
             next()
@@ -97,22 +102,18 @@ action 'update', ->
     @product.set body
    
     @product.save (err, product)->
-        if err then app.handleError err
+        if err 
+            res.json error: err.message
         else
             res.json product
             next()
 
-action 'variations', ->
-    compound.models.Variation.all (err, variations)->
-        res.json variations
-
-## ---- Destroy Action ------------------------------ ##
 
 action 'destroy', ->
 
     remove =  =>  
         @product.remove (err) =>
-            if err then app.handleError err
+            if err then res.json error: err.message
             else
                 res.json success: 'product deleted'
                 next()
@@ -123,7 +124,7 @@ action 'destroy', ->
                 group._members.pull @product._id
                 if group._members.length is 0
                     group.remove (err)=>
-                        if err then app.handleError err else remove()
+                        if err then res.json error: err.message else remove()
                 else
                     remove()
             else

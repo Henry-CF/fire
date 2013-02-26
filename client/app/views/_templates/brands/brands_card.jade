@@ -1,7 +1,9 @@
 - var brand = locals
-.span2 #{brand.name}
+.span2 
+  a(href!='#/brands/#{brand._id}/edit') #{brand.name}
+  
 .row-actions
-	a(href!='#/brands/#{brand._id}/edit')
-		i.icon-edit
-	a(href='#', data-id='#{brand._id}' ).delete
-		i.icon-trash
+  a(href!='#/brands/#{brand._id}/edit')
+    i.icon-edit
+  a(href='#', data-id='#{brand._id}' ).delete
+    i.icon-trash

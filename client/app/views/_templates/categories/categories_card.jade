@@ -1,7 +1,8 @@
 - var category = locals
-.span2 #{category.name}
+.span2 
+  a(href!='#/categories/#{category._id}/edit') #{category.name}
 .row-actions
-	a(href!='#/categories/#{category._id}/edit')
-		i.icon-edit
-	a(href='#', data-id!='#{category._id}' ).delete
-		i.icon-trash
+  a(href!='#/categories/#{category._id}/edit')
+    i.icon-edit
+  a(href='#', data-id!='#{category._id}' ).delete
+    i.icon-trash

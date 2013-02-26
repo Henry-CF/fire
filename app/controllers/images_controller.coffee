@@ -1,3 +1,5 @@
+load 'application'
+
 _ = require 'underscore'
 
 before 'load image', ->

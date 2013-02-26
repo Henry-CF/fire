@@ -2411,7 +2411,7 @@ window.require.define({"models/product_markets": function(exports, require, modu
       for (_i = 0, _len = markets.length; _i < _len; _i++) {
         market = markets[_i];
         if (this._prices) {
-          product_market = this.find_price_point(market.id);
+          product_market = this.find_price_point(market._id);
           if (product_market) {
             this.merge(market, product_market);
           } else {
@@ -2430,19 +2430,16 @@ window.require.define({"models/product_markets": function(exports, require, modu
     };
 
     Product_Markets.prototype.merge = function(market_data, product_market) {
-      var market,
-        _this = this;
+      var market;
       market = new this.model;
-      return (function(market) {
-        market.set('_market', market_data._id);
-        market.set('name', market_data.name);
-        market.set('surcharges', new Product_Market_Surcharges(market_data.surcharges));
-        market.set('active', (product_market != null ? product_market.active : void 0) === true ? true : false);
-        if (product_market.price) {
-          market.set('price', product_market.price);
-        }
-        return _this.push(market);
-      })(market);
+      market.set('_market', market_data._id);
+      market.set('name', market_data.name);
+      market.set('surcharges', new Product_Market_Surcharges(market_data.surcharges));
+      market.set('active', (product_market != null ? product_market.active : void 0) === true ? true : false);
+      if (product_market.price) {
+        market.set('price', product_market.price);
+      }
+      return this.push(market);
     };
 
     Product_Markets.prototype.add_market = function(attrs) {
@@ -3583,7 +3580,9 @@ window.require.define({"views/_templates/brands/brands_card": function(exports, 
   with (locals || {}) {
   var interp;
    var brand = locals
-  buf.push('<div class="span2">' + escape((interp = brand.name) == null ? '' : interp) + '</div><div class="row-actions"><a');
+  buf.push('<div class="span2"> <a');
+  buf.push(attrs({ 'href':('#/brands/' + (brand._id) + '/edit') }, {"href":false}));
+  buf.push('>' + escape((interp = brand.name) == null ? '' : interp) + '</a></div><div class="row-actions"><a');
   buf.push(attrs({ 'href':('#/brands/' + (brand._id) + '/edit') }, {"href":false}));
   buf.push('><i class="icon-edit"></i></a><a');
   buf.push(attrs({ 'href':('#'), 'data-id':('' + (brand._id) + ''), "class": ('delete') }, {"href":true,"data-id":true}));
@@ -3696,7 +3695,9 @@ window.require.define({"views/_templates/categories/categories_card": function(e
   with (locals || {}) {
   var interp;
    var category = locals
-  buf.push('<div class="span2">' + escape((interp = category.name) == null ? '' : interp) + '</div><div class="row-actions"><a');
+  buf.push('<div class="span2"> <a');
+  buf.push(attrs({ 'href':('#/categories/' + (category._id) + '/edit') }, {"href":false}));
+  buf.push('>' + escape((interp = category.name) == null ? '' : interp) + '</a></div><div class="row-actions"><a');
   buf.push(attrs({ 'href':('#/categories/' + (category._id) + '/edit') }, {"href":false}));
   buf.push('><i class="icon-edit"></i></a><a');
   buf.push(attrs({ 'href':('#'), 'data-id':('' + (category._id) + ''), "class": ('delete') }, {"href":true,"data-id":false}));
@@ -3954,7 +3955,9 @@ window.require.define({"views/_templates/markets/markets_card": function(exports
   with (locals || {}) {
   var interp;
    var market = locals
-  buf.push('<div class="span2">' + escape((interp = market.name) == null ? '' : interp) + '</div><div class="row-actions"><a');
+  buf.push('<div class="span2"> <a');
+  buf.push(attrs({ 'href':('#/markets/' + (market._id) + '/edit') }, {"href":false}));
+  buf.push('>' + escape((interp = market.name) == null ? '' : interp) + '</a></div><div class="row-actions"><a');
   buf.push(attrs({ 'href':('#/markets/' + (market._id) + '/edit') }, {"href":false}));
   buf.push('><i class="icon-edit"></i></a><a');
   buf.push(attrs({ 'href':('#'), 'data-id':('' + (market._id) + ''), "class": ('delete') }, {"href":true,"data-id":true}));
@@ -4432,7 +4435,9 @@ window.require.define({"views/_templates/scopes/scopes_card": function(exports, 
   with (locals || {}) {
   var interp;
    var scope = locals
-  buf.push('<div class="span2">' + escape((interp = scope.name) == null ? '' : interp) + '</div><div class="row-actions"><a');
+  buf.push('<div class="span2"> <a');
+  buf.push(attrs({ 'href':('#/scopes/' + (scope._id) + '/edit') }, {"href":false}));
+  buf.push('>' + escape((interp = scope.name) == null ? '' : interp) + '</a></div><div class="row-actions"><a');
   buf.push(attrs({ 'href':('#/scopes/' + (scope._id) + '/edit') }, {"href":false}));
   buf.push('><i class="icon-edit"></i></a><a');
   buf.push(attrs({ 'href':('#'), 'data-id':('' + (scope._id) + ''), "class": ('delete') }, {"href":true,"data-id":true}));
@@ -4485,7 +4490,9 @@ window.require.define({"views/_templates/suppliers/suppliers_card": function(exp
   with (locals || {}) {
   var interp;
    var supplier = locals
-  buf.push('<div class="span2">' + escape((interp = supplier.name) == null ? '' : interp) + '</div><div class="row-actions"><a');
+  buf.push('<div class="span2"> <a');
+  buf.push(attrs({ 'href':('#/suppliers/' + (supplier._id) + '/edit') }, {"href":false}));
+  buf.push('>' + escape((interp = supplier.name) == null ? '' : interp) + '</a></div><div class="row-actions"><a');
   buf.push(attrs({ 'href':('#/suppliers/' + (supplier._id) + '/edit') }, {"href":false}));
   buf.push('><i class="icon-edit"></i></a><a');
   buf.push(attrs({ 'href':('#'), 'data-id':('' + (supplier._id) + ''), "class": ('delete') }, {"href":true,"data-id":true}));
@@ -4571,7 +4578,9 @@ window.require.define({"views/_templates/templates/templates_card": function(exp
   with (locals || {}) {
   var interp;
    var template = locals
-  buf.push('<div class="span2">' + escape((interp = template.name) == null ? '' : interp) + '</div><div class="row-actions"><a');
+  buf.push('<div class="span2"> <a');
+  buf.push(attrs({ 'href':('#/templates/' + (template._id) + '/edit') }, {"href":false}));
+  buf.push('>' + escape((interp = template.name) == null ? '' : interp) + '</a></div><div class="row-actions"><a');
   buf.push(attrs({ 'href':('#/templates/' + (template._id) + '/edit') }, {"href":false}));
   buf.push('><i class="icon-edit"></i></a><a');
   buf.push(attrs({ 'href':('#'), 'data-id':('' + (template._id) + ''), "class": ('delete') }, {"href":true,"data-id":true}));

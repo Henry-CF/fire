@@ -11,8 +11,9 @@ module.exports = class Product_Markets extends Chaplin.Collection
     super
     @initSyncMachine()
 
-  set_pricing: (price_points)-> @_prices = _(price_points)
-
+  set_pricing: (price_points)-> 
+    @_prices = _(price_points)
+  
   find_price_point: (id)-> return (@_prices.where _market: id)[0]
 
   load: ->
@@ -32,7 +33,7 @@ module.exports = class Product_Markets extends Chaplin.Collection
     for market in markets 
       if @_prices 
         
-        product_market = @find_price_point market.id
+        product_market = @find_price_point market._id
         
         if product_market 
           @merge market, product_market 
@@ -50,18 +51,18 @@ module.exports = class Product_Markets extends Chaplin.Collection
     # This market has already been calculated previously and saved to server
     # Insure that it is up-to-date and merge it
     market = new @model
-    do (market)=>
-      market.set '_market', market_data._id
-      market.set 'name', market_data.name
+    
+    market.set '_market', market_data._id
+    market.set 'name', market_data.name
 
-      # must invoke new instance of Product_Market_Surcharges and not rely on model defaults
-      # odd memory closure bug
-      market.set 'surcharges', new Product_Market_Surcharges market_data.surcharges
-     
-      market.set 'active', if product_market?.active is true then true else false
-      if product_market.price then market.set 'price', product_market.price
+    # must invoke new instance of Product_Market_Surcharges and not rely on model defaults
+    # odd memory closure bug
+    market.set 'surcharges', new Product_Market_Surcharges market_data.surcharges
+    
+    market.set 'active', if product_market?.active is true then true else false
+    if product_market.price then market.set 'price', product_market.price
 
-      @push market
+    @push market
 
   add_market: (attrs)->
     # the market is new, or has not been saved to this model before

@@ -4,6 +4,11 @@ exports.routes = (map) ->
   map.get '/_q', 'search#globalQuery'
   map.get '/_q/:model', 'search#dynamicQuery'
 
+  # Auth
+  map.get '/login', 'auth#login'
+  map.get '/_logout', 'auth#logout'
+  map.post '_verify', 'auth#verify'
+
   map.resources 'suppliers'
   map.resources "categories"
   map.resources "brands"
@@ -11,6 +16,8 @@ exports.routes = (map) ->
   map.resources 'images'
   map.resources 'scopes'
   map.resources 'variationstemplates'
+  map.resources 'users'
+
 
   map.resources 'markets'
 
@@ -20,8 +27,6 @@ exports.routes = (map) ->
   map.get 'destroy', 'product_groups#destroy'
 
   map.get '/images/tags/:tags', 'images#tags'
-
-  map.resource 'users', subdomain: 'admin.harrisonavenueonline.com'
 
   # Handles uploads
   # Abstracted away from Image controller due to future uploading capabilities

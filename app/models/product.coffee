@@ -87,7 +87,7 @@ module.exports = (compound)->
 
     progress = ->  if --wait is 0 then next(null, product)
     if product._brand
-      compound.model.Color.find
+      compound.models.Color.find
         _id:
           $in: product._brand.colors
       , (err, colors)=>
@@ -97,7 +97,7 @@ module.exports = (compound)->
     else progress()
 
     if product._brand
-      compound.model.Material.find
+      compound.models.Material.find
         _id:
           $in: product._brand.materials
       , (err, materials)=>
@@ -114,7 +114,6 @@ module.exports = (compound)->
       console.log 'step 1 started'
       client_ids = _(variations).pluck('_id')
       db_ids = ("#{id}" for id in @variations)
-
 
       ids_for_deletion = []
       step_1_wait = db_ids.length
@@ -137,36 +136,30 @@ module.exports = (compound)->
 
       if ids_for_deletion.length > 0
         
-        app.debug @variations
-        compound.model.Variation.remove { _id: { $in: ids_for_deletion  } } , (err, nRemoved)=>
-          if err then next(err)
+        compound.models.Variation.remove { _id: { $in: ids_for_deletion  } } , (err, nRemoved)=>
+          if err 
+            next(err)
           else
-            app.debug "Number removed :: #{nRemoved} <> Expected :: #{ids_for_deletion.length}"
-
-            app.debug "<-- performing pull -->"
-            app.debug ids_for_deletion
+            # pull out old ids so that our array is updated
             @variations.pull(id) for id in ids_for_deletion
-            
             upsert_variations(docs_for_upsert)
       else
         upsert_variations(docs_for_upsert)
 
     upsert_variations = (docs_for_upsert)=>
       step_3_wait = docs_for_upsert.length
-      app.debug 'step 3 started'
       if step_3_wait > 0
         for variation in docs_for_upsert
           do (variation)=>
             variation['_product'] = @_id
             if variation._id 
-              compound.model.Variation.findById variation._id, (err, doc)=>
+              compound.models.Variation.findById variation._id, (err, doc)=>
                 if err then next(err)
                 doc.set variation
                 doc.save (err, doc)->
                   if err then next(err)                
                   if --step_3_wait is 0 then next(null) 
             else
-              console.log 'create new variation'
               new_v = new model.Variation variation
               new_v.save (err, doc)=>
                 if err then next(err) else @variations.push new_v._id
@@ -179,7 +172,7 @@ module.exports = (compound)->
   Schema.pre 'save', (next)->
 
     verify_membership = =>
-      compound.model.ProductGroup.findOne(title: @title).exec (err, group)=>
+      compound.models.ProductGroup.findOne(title: @title).exec (err, group)=>
         if group
           console.log 'Group exists :: verifying membership'
           console.log "Membership test: #{group._members.indexOf(@_id)}"
@@ -207,7 +200,7 @@ module.exports = (compound)->
     upsert_group = =>
       app.debug 'upserting product to group'
       
-      compound.model.ProductGroup.findOne(title: @title).exec (err, group)=>
+      compound.models.ProductGroup.findOne(title: @title).exec (err, group)=>
         if group
           # add this product as a group member
           unless group._members.indexOf @_id

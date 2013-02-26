@@ -1,7 +1,8 @@
 - var template = locals
-.span2 #{template.name}
+.span2 
+  a(href!='#/templates/#{template._id}/edit') #{template.name}
 .row-actions
-	a(href!='#/templates/#{template._id}/edit')
-		i.icon-edit
-	a(href='#', data-id='#{template._id}' ).delete
-		i.icon-trash
+  a(href!='#/templates/#{template._id}/edit')
+    i.icon-edit
+  a(href='#', data-id='#{template._id}' ).delete
+    i.icon-trash

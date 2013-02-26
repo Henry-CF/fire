@@ -1,6 +1,6 @@
+load 'sessions'
+
 before 'setup layout variables', ->
-  # Pass array returned from backbone_templates_crawler.coffee initializer
-  #@tpls = app.settings.backbonetemplates
 
   # Set the socket.io port
   @websocketsPort = app.settings.websocketsPort
@@ -18,8 +18,3 @@ before 'setup layout variables', ->
 action 'dashboard', ()->
   render
     title: "Dashboard"
-
-
-action 'test', ()->
-  compound.models.Brand.where().exec (err, brands)=>
-    res.json brands

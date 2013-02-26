@@ -24,7 +24,8 @@ module.exports = class Product_Market extends Model
     @bind "change:price", @calculate_profit
     @bind "change:price", @calculate_roi
 
-    
+
+
   calculate_price: ->
     market_price = 0
 
@@ -64,8 +65,7 @@ module.exports = class Product_Market extends Model
     if new_price
         @set 'price', new_price
     else
-        @set 'price', 0
-    
+        @set 'price', 0    
 
   calculate_roi: (model, price)->
     $_total_cost = @_pricing.supplier_costs + @_pricing.product_cost + (price * @_pricing.market_costs)

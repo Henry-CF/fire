@@ -17,6 +17,7 @@ exports.config =
           'vendor/scripts/underscore-1.3.3.js',
           'vendor/scripts/underscore-min.js'
           'vendor/scripts/backbone-0.9.2.js'
+          'vendor/scripts/rails.js'
         ]
 
     stylesheets:

@@ -1,6 +1,7 @@
 - var market = locals
 
-.span2 #{market.name}
+.span2 
+  a(href!='#/markets/#{market._id}/edit') #{market.name}
 .row-actions
   a(href!='#/markets/#{market._id}/edit')
     i.icon-edit

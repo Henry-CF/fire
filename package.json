@@ -19,7 +19,8 @@
     "mongoose": "~3.5.3",
     "natural": "~0.1.19",
     "underscore": "~1.4.4",
-    "connect-redis": "~1.4.5"
+    "connect-redis": "~1.4.5",
+    "bcrypt": "~0.7.3"
   },
   "devDependencies": {
     "nodeunit": "*",

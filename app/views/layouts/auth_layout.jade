@@ -1,0 +1,23 @@
+!!! 5
+html
+  head
+    title= title
+    != stylesheet_link_tag('bootstrap', 'style', 'bootstrap-responsive', 'app')
+    != javascript_include_tag('https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js', 'rails', 'application')
+    != csrf_meta_tag()
+  body.auth
+
+    .container
+      - var flash = request.flash('info').pop(); if (flash) {
+        .alert.alert-block.alert-info= flash
+      - }
+
+      - flash = request.flash('error').pop(); if (flash) {
+        .alert.alert-block.alert-error= flash
+      - }
+
+      != body
+      - var date = new Date() 
+
+      footer
+        p © Harrison Avenue Business Solutions #{date.getFullYear()}

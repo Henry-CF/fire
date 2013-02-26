@@ -1,0 +1,24 @@
+.page-header
+  h3 Edit #{user.first_name} #{user.last_name}
+
+
+- var form = formFor(user, {action: pathTo.user(user), method: 'PUT', id: "model_form", class: 'form-horizontal'});
+
+!= form.begin()
+.row
+    input(name='first_name', value='#{user.first_name}', placeholder='First name...')#first_name
+    input(name='last_name', value='#{user.last_name}', placeholder='Last name...')
+  
+  .row
+    input(name='email', value='#{user.email}', placeholder='jsmith@example.com')#email
+
+  .row
+    label Super user?
+    input(name='superuser', checked='#{user.superuser ? true : ''}', type='checkbox').superuser
+
+.form-actions
+  != form.submit('<i class="icon-ok icon-white"></i> Update model', {class: 'btn btn-primary'})
+  span= ' or '
+  != linkTo('Cancel', pathTo.users(), {class: 'btn'})
+!= form.end()
+

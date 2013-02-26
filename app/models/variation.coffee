@@ -8,7 +8,10 @@ module.exports = (compound)->
       type: String
       lowercase: true
 
-    surchage: Number
+    surcharge: 
+      type:Number
+      default: 0
+      
     sku: String
     skuMod: String
     surcharge: Number

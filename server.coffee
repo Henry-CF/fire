@@ -7,10 +7,12 @@ app = module.exports = (params) ->
   return require('compound').createServer(params)
 
 if not module.parent
-  port = process.env.PORT || 3000
+  port = process.env.PORT || 3002
   host = process.env.HOST || "0.0.0.0"
   server = app()
+ 
   server.listen port, host, ->
     console.log(
       "Compound server listening on %s:%d within %s environment",
       host, port, server.set('env'))
+ 

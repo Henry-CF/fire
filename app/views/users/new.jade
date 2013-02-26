@@ -1,0 +1,20 @@
+.page-header
+  h3 New User
+
+form(action='/users', method='POST')#user
+  .row
+    input(name='first_name', value=user.first_name, placeholder='First name...')#first_name
+    input(name='last_name', value=user.last_name, placeholder='Last name...')#last_name
+  
+  .row
+    input(name='email', value=user.email, placeholder='jsmith@example.com')#email
+
+  .row
+    label Super user?
+    input(name='superuser', type='checkbox').superuser
+
+  .row
+    input(name='password', type='password', placeholder='password')#password
+    input(name='password-check', type='password', placeholder='verify password')#password-confirm
+
+  button(action='submit') Create

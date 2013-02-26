@@ -1,0 +1,16 @@
+.app
+  .header
+    h1 Login
+  .body
+    form(action="#{path_to._verify}", method='POST')#login_form
+      ul
+        li
+          label(for="Email") Email
+          .input
+            input(name="email")#email
+        li
+          label(for='password')
+          .input
+            input(name="password", type='password')#password
+        li.actions
+          button.submit(class='btn primary') Login 
